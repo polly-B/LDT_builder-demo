@@ -1,0 +1,145 @@
+9.9675 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color='black', colorSpace='named', fullscr=UNKNOWN, gamma=None, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x114df2910>, name='window1', pos=[0, 0], screen=0, size=array([1440,  900]), stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.9675 	EXP 	window1: recordFrameIntervals = False
+10.1338 	EXP 	window1: recordFrameIntervals = True
+10.3172 	EXP 	window1: recordFrameIntervals = False
+10.4126 	EXP 	Created instr1 = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Courier', fontFiles=[], height=0.1, italic=False, name='instr1', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units='norm', win=Window(...), wrapWidth=1)
+10.4195 	EXP 	Created unnamed Circle = Circle(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1.5, name='unnamed Circle', opacity=1.0, ori=array(0.0), pos=array([-0.625, -0.47 ]), size=array([ 1.,  1.]), units='height', vertices=ndarray(...), win=Window(...))
+10.4269 	EXP 	Created itemL = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='White', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='courier', fontFiles=[], height=0.15, italic=False, name='itemL', opacity=1.0, ori=0, pos=array([ 0. , -0.2]), rgb=array([ 255.,  255.,  255.]), text=u'default text', units='norm', win=Window(...), wrapWidth=1)
+10.4306 	EXP 	Created itemR = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='courier', fontFiles=[], height=0.15, italic=False, name='itemR', opacity=1.0, ori=0, pos=array([ 0. ,  0.2]), rgb=array([ 255.,  255.,  255.]), text=u'default text', units='norm', win=Window(...), wrapWidth=1)
+10.4381 	EXP 	Created fixation = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.2, italic=False, name='fixation', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=u'+', units='norm', win=Window(...), wrapWidth=1)
+10.4389 	EXP 	Created blank = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-4.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='blank', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text='', units='norm', win=Window(...), wrapWidth=1)
+10.4449 	EXP 	Created feedback_2 = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color=array([ 1.,  1.,  1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font=u'Arial', fontFiles=[], height=0.1, italic=False, name='feedback_2', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 1.,  1.,  1.]), text=u'default text', units='norm', win=Window(...), wrapWidth=1)
+10.4646 	EXP 	Created instrText = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color=array([ 1.,  1.,  1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Courier', fontFiles=[], height=0.1, italic=False, name='instrText', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 1.,  1.,  1.]), text=unicode(...), units='norm', win=Window(...), wrapWidth=1)
+10.4672 	EXP 	Created unnamed Circle = Circle(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1.5, name='unnamed Circle', opacity=1.0, ori=array(0.0), pos=array([-0.625, -0.47 ]), size=array([ 1.,  1.]), units='height', vertices=ndarray(...), win=Window(...))
+10.4708 	EXP 	Created itemL = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='White', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='courier', fontFiles=[], height=0.15, italic=False, name='itemL', opacity=1.0, ori=0, pos=array([ 0. , -0.2]), rgb=array([ 255.,  255.,  255.]), text=u'default text', units='norm', win=Window(...), wrapWidth=1)
+10.4744 	EXP 	Created itemR = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='courier', fontFiles=[], height=0.15, italic=False, name='itemR', opacity=1.0, ori=0, pos=array([ 0. ,  0.2]), rgb=array([ 255.,  255.,  255.]), text=u'default text', units='norm', win=Window(...), wrapWidth=1)
+10.4765 	EXP 	Created fixation = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.2, italic=False, name='fixation', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=u'+', units='norm', win=Window(...), wrapWidth=1)
+10.4771 	EXP 	Created blank = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-4.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='blank', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text='', units='norm', win=Window(...), wrapWidth=1)
+10.5027 	EXP 	Created thanksText = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color=array([ 1.,  1.,  1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='arial', fontFiles=[], height=0.2, italic=False, name='thanksText', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 1.,  1.,  1.]), text=unicode(...), units='norm', win=Window(...), wrapWidth=1)
+10.5194 	EXP 	instr1: autoDraw = True
+11.2251 	DATA 	Keypress: space
+11.2306 	EXP 	Imported conditions1.xlsx as conditions, 4 conditions, 6 params
+11.2309 	EXP 	Created sequence: sequential, trialTypes=4, nReps=1, seed=None
+11.2312 	EXP 	New trial (rep=0, index=0): {u'typeL': u'word', u'right': u'ship', u'TrialN': 1L, u'corrAns': 3L, u'TypeR': u'word', u'left': u'tour'}
+11.2497 	EXP 	instr1: autoDraw = False
+11.2497 	EXP 	itemL: text = u'tour'
+11.2497 	EXP 	itemR: text = u'ship'
+11.2497 	EXP 	blank: autoDraw = True
+11.7505 	EXP 	fixation: autoDraw = True
+11.7505 	EXP 	blank: autoDraw = False
+12.2502 	EXP 	itemR: autoDraw = True
+12.2502 	EXP 	itemL: autoDraw = True
+12.5005 	EXP 	fixation: autoDraw = False
+12.5005 	EXP 	itemR: autoDraw = False
+12.5005 	EXP 	itemL: autoDraw = False
+14.1026 	DATA 	Keypress: 1
+15.2857 	EXP 	fixation: autoDraw = False
+15.2857 	EXP 	blank: autoDraw = False
+15.2857 	EXP 	itemL: autoDraw = False
+15.2857 	EXP 	itemR: autoDraw = False
+15.2857 	EXP 	feedback_2: text = 'Oops! That was wrong'
+15.2857 	EXP 	feedback_2: autoDraw = True
+16.2528 	EXP 	New trial (rep=0, index=1): {u'typeL': u'non word', u'right': u'****', u'TrialN': 2L, u'corrAns': 1L, u'TypeR': u'non word', u'left': u'****'}
+16.2691 	EXP 	feedback_2: autoDraw = False
+16.2691 	EXP 	itemL: text = u'****'
+16.2691 	EXP 	itemR: text = u'****'
+16.2691 	EXP 	blank: autoDraw = True
+16.7664 	EXP 	blank: autoDraw = False
+16.7841 	EXP 	fixation: autoDraw = True
+17.2837 	EXP 	itemR: autoDraw = True
+17.2837 	EXP 	itemL: autoDraw = True
+17.5174 	EXP 	fixation: autoDraw = False
+17.5174 	EXP 	itemR: autoDraw = False
+17.5174 	EXP 	itemL: autoDraw = False
+18.8697 	DATA 	Keypress: 1
+19.9024 	EXP 	fixation: autoDraw = False
+19.9024 	EXP 	blank: autoDraw = False
+19.9024 	EXP 	itemL: autoDraw = False
+19.9024 	EXP 	itemR: autoDraw = False
+19.9024 	EXP 	feedback_2: text = 'Correct! RT=1.586'
+19.9024 	EXP 	feedback_2: autoDraw = True
+20.8699 	EXP 	New trial (rep=0, index=2): {u'typeL': u'non word', u'right': u'hart', u'TrialN': 3L, u'corrAns': 2L, u'TypeR': u'word', u'left': u'****'}
+20.8853 	EXP 	feedback_2: autoDraw = False
+20.8853 	EXP 	feedback_2: autoDraw = False
+20.8853 	EXP 	itemL: text = u'****'
+20.8853 	EXP 	itemR: text = u'hart'
+20.8853 	EXP 	blank: autoDraw = True
+21.3855 	EXP 	blank: autoDraw = False
+21.4022 	EXP 	fixation: autoDraw = True
+21.9023 	EXP 	itemR: autoDraw = True
+21.9023 	EXP 	itemL: autoDraw = True
+22.1355 	EXP 	fixation: autoDraw = False
+22.1355 	EXP 	itemR: autoDraw = False
+22.1355 	EXP 	itemL: autoDraw = False
+23.0030 	DATA 	Keypress: 1
+23.3021 	EXP 	fixation: autoDraw = False
+23.3021 	EXP 	blank: autoDraw = False
+23.3021 	EXP 	itemL: autoDraw = False
+23.3021 	EXP 	itemR: autoDraw = False
+23.3021 	EXP 	feedback_2: text = 'Oops! That was wrong'
+23.3021 	EXP 	feedback_2: autoDraw = True
+24.2699 	EXP 	New trial (rep=0, index=3): {u'typeL': u'non word', u'right': u'****', u'TrialN': 4L, u'corrAns': 1L, u'TypeR': u'non word', u'left': u'****'}
+24.2850 	EXP 	feedback_2: autoDraw = False
+24.2850 	EXP 	feedback_2: autoDraw = False
+24.2850 	EXP 	itemL: text = u'****'
+24.2850 	EXP 	itemR: text = u'****'
+24.2850 	EXP 	blank: autoDraw = True
+24.7858 	EXP 	blank: autoDraw = False
+24.8021 	EXP 	fixation: autoDraw = True
+25.3024 	EXP 	itemR: autoDraw = True
+25.3024 	EXP 	itemL: autoDraw = True
+25.5358 	EXP 	fixation: autoDraw = False
+25.5358 	EXP 	itemR: autoDraw = False
+25.5358 	EXP 	itemL: autoDraw = False
+27.1862 	DATA 	Keypress: 1
+28.2191 	EXP 	fixation: autoDraw = False
+28.2191 	EXP 	blank: autoDraw = False
+28.2191 	EXP 	itemL: autoDraw = False
+28.2191 	EXP 	itemR: autoDraw = False
+28.2191 	EXP 	feedback_2: text = 'Correct! RT=1.884'
+28.2191 	EXP 	feedback_2: autoDraw = True
+29.2023 	EXP 	feedback_2: autoDraw = False
+29.2023 	EXP 	feedback_2: autoDraw = False
+29.2023 	EXP 	instrText: autoDraw = True
+29.7394 	DATA 	Keypress: 1
+29.8432 	EXP 	Imported conditions4.xlsx as conditions, 407 conditions, 11 params
+29.8445 	EXP 	Created sequence: sequential, trialTypes=407, nReps=1, seed=None
+29.8448 	EXP 	New trial (rep=0, index=0): {u'right': u'buck', u'Zipf_L': 4.26, u'Trial_number_L': 5307L, u'FreqCount_L': 3648L, u'Trial_Number_R': 7295L, u'FreqCount_R': 1837L, u'corrAns': 3L, u'Zipf_R': 3.96, u'order': 0.9338627969471647, u'condition': u'two words', u'left': u'pipe'}
+29.8687 	EXP 	instrText: autoDraw = False
+29.8687 	EXP 	itemL: text = u'pipe'
+29.8687 	EXP 	itemR: text = u'buck'
+29.8687 	EXP 	blank: autoDraw = True
+30.3521 	EXP 	blank: autoDraw = False
+30.3690 	EXP 	fixation: autoDraw = True
+30.8670 	EXP 	itemR: autoDraw = True
+30.8670 	EXP 	itemL: autoDraw = True
+31.1007 	EXP 	fixation: autoDraw = False
+31.1007 	EXP 	itemR: autoDraw = False
+31.1007 	EXP 	itemL: autoDraw = False
+31.3530 	DATA 	Keypress: 1
+32.3190 	EXP 	fixation: autoDraw = False
+32.3190 	EXP 	blank: autoDraw = False
+32.3190 	EXP 	itemL: autoDraw = False
+32.3190 	EXP 	itemR: autoDraw = False
+32.3190 	EXP 	feedback_2: text = 'Oops! That was wrong'
+32.3190 	EXP 	feedback_2: autoDraw = True
+33.2865 	EXP 	New trial (rep=0, index=1): {u'right': u'damp', u'Zipf_L': u'NA', u'Trial_number_L': u'NA', u'FreqCount_L': u'NA', u'Trial_Number_R': 4890L, u'FreqCount_R': 4381L, u'corrAns': 2L, u'Zipf_R': 4.34, u'order': 0.7505956024951798, u'condition': u'one word_R', u'left': u'****'}
+33.3024 	EXP 	feedback_2: autoDraw = False
+33.3024 	EXP 	feedback_2: autoDraw = False
+33.3024 	EXP 	itemL: text = u'****'
+33.3024 	EXP 	itemR: text = u'damp'
+33.3024 	EXP 	blank: autoDraw = True
+33.8006 	EXP 	blank: autoDraw = False
+33.8168 	EXP 	fixation: autoDraw = True
+34.3174 	EXP 	itemR: autoDraw = True
+34.3174 	EXP 	itemL: autoDraw = True
+34.4025 	DATA 	Keypress: 1
+36.2908 	DATA 	Keypress: 1
+36.2927 	DATA 	Keypress: 1
+36.3017 	EXP 	fixation: autoDraw = False
+36.3017 	EXP 	blank: autoDraw = False
+36.3017 	EXP 	itemL: autoDraw = False
+36.3017 	EXP 	itemR: autoDraw = False
+36.3017 	EXP 	feedback_2: text = 'Oops! That was wrong'
+36.3017 	EXP 	feedback_2: autoDraw = True
+37.0874 	DATA 	Keypress: escape
