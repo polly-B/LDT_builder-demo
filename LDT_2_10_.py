@@ -1,5 +1,5 @@
                                                                                                 #%$ thing that need doing:
-                                                                                            #1. Figure out why info isn't printing to file
+                                                                                            #1. Figure out why it doesn't work if not triggered
                                                                                             #2.Figure out how to include button box press to end trial
 
 #!/usr/bin/env python2
@@ -29,7 +29,7 @@ import serial
 import serial.tools.list_ports
 import time, sys, os#, pylab
 useButtonBox = True
-triggerTest = True
+triggerTest = False
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemencoding())
 os.chdir(_thisDir)
@@ -88,7 +88,7 @@ def initialiseButtonBox():
 if useButtonBox:
     buttonBox = initialiseButtonBox()
     buttonBox.in_waiting #The box can be tricky. You need to send it something in order for it to start responding to .write() commands. This just checks the number of lines in the output buffer.
-    core.wait(2) #Wait for a couple of seconds. The box is kinda slow
+    core.wait(3) #Wait for a couple of seconds. The box is kinda slow
     buttonBox.reset_input_buffer()
     nTriggerTestTrials = 0
     nTriggeredTestTrials = 0
@@ -159,7 +159,6 @@ feedback_2 = visual.TextStim(win=win, name='feedback_2',
     pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
     color=[1,1,1], colorSpace='rgb', opacity=1,
     depth=-1.0);
-
 # Initialize components for Routine "instruct"
 instructClock = core.Clock()
 instrText = visual.TextStim(win=win, name='instrText',
@@ -256,10 +255,6 @@ while continueRoutine:
         if len(theseKeys) > 0:  # at least one key was pressed
             # a response ends the routine
          continueRoutine = False
-        if useButtonBox:
-            if totalTrials > 0:
-                continueRoutine = False
-                
     
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -321,7 +316,7 @@ for thisPractice in practice:
     itemR.setText(right)
 
     # keep track of which components have finished
-    trialComponents = [fixation, blank,itemL, itemR,resp]
+    trialComponents = [fixation, blank,itemL, itemR, resp]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -385,10 +380,6 @@ for thisPractice in practice:
             event.clearEvents(eventType='keyboard')
         if resp.status == STARTED:
             theseKeys = event.getKeys(keyList=['1', '2', '3'])
-#        if useButtonBox:
-#            if resp.status == STARTED:
-#                buttonBox.write(b'b')
-
             # check for quit:
             if "escape" in theseKeys:
                 endExpNow = True
@@ -403,6 +394,9 @@ for thisPractice in practice:
                         resp.corr = 0
                     # a response ends the routine
                     continueRoutine = False
+#            if useButtonBox:
+#               if buttonBox.write(b'p')
+#                   continueRoutine = False
 
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -433,7 +427,7 @@ for thisPractice in practice:
            resp.corr = 1  # correct non-response
         else:
            resp.corr = 0  # failed to respond (incorrectly)
-    if useButtonBox and triggerTest:
+    if useButtonBox and not triggerTest:
         print('Button box info...')
         print('\t',buttonBox.in_waiting, 'bytes in BB buffer')
         BBLine = buttonBox.readline()
@@ -441,20 +435,7 @@ for thisPractice in practice:
         print(str(len(BBLine)))
         while buttonBox.in_waiting>0:
             print(buttonBox.readline())
-        if BBLine=="Timed Out\n\r":
-            timing = response = 'NA'
-            triggered = True
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p')
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-        elif BBLine == "No Trigger\n\r":
-            timing = response = "NA"
-            nNoTrigger+= 1
-            triggered = False
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p')
-            buttonBox.readline()
-        else: # BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
+        if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
             BBLine = BBLine.split('\t')
             timing = BBLine[0]
             response = BBLine[1][0]#Second indexing removes \n\r
@@ -468,7 +449,22 @@ for thisPractice in practice:
             buttonBox.reset_input_buffer()
             buttonBox.write(b'p') 
             buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-    elif useButtonBox and not triggerTest:
+        elif BBLine=="Triggered\n\r":
+            timing = response = 'NA'
+            triggered = True
+            nTriggeredTestTrials += 1
+            while buttonBox.in_waiting>0:
+                print(buttonBox.readline())
+            buttonBox.reset_input_buffer()
+            buttonBox.write(b'p') 
+            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+        else:
+            timing = response = 'NA'
+            triggered = False
+            buttonBox.reset_input_buffer()
+            buttonBox.write(b'p')
+            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+    elif useButtonBox and triggerTest:
         print('Button box info...')
         print('\t',buttonBox.in_waiting, 'bytes in BB buffer')
         BBLine = buttonBox.readline()
@@ -476,34 +472,23 @@ for thisPractice in practice:
         print(str(len(BBLine)))
         while buttonBox.in_waiting>0:
             print(buttonBox.readline())
-        if BBLine=="Timed Out\r\n":
+        if BBLine=="Triggered\n\r":
             timing = response = 'NA'
             triggered = True
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'b')
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-        elif BBLine == "No Trigger\r\n":
-            timing = response = "NA"
-            nNoTrigger+= 1
-            triggered = False
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'd')
-            buttonBox.readline()
-        else: # BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
-            BBLine = BBLine.split('\t')
-            timing = BBLine[0]
-            response = BBLine[1][0] #Second indexing removes \n\r
-            triggered = True
-            print('timing...')
-            print('\t', str(timing))
-            print('response...')
-            print('\t', str(response))
+            nTriggeredTestTrials += 1
             while buttonBox.in_waiting>0:
                 print(buttonBox.readline())
             buttonBox.reset_input_buffer()
             buttonBox.write(b'p') 
             buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-            # store data for practice (TrialHandler)
+        else:
+            timing = response = 'NA'
+            triggered = False
+            buttonBox.reset_input_buffer()
+            buttonBox.write(b'p')
+            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+
+                # store data for practice (TrialHandler)
     practice.addData('resp.keys',resp.keys)
     practice.addData('resp.corr', resp.corr)
     if resp.keys != None:  # we had a response
@@ -527,13 +512,17 @@ for thisPractice in practice:
     if resp.corr:#stored on last run routine
       msg="Correct! RT=%.3f" %(resp.rt)
 #    elif useButtonBox:
-#        if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
-#           msg="good" 
-#        else:
-#          msg="Oops! That was too slow"
     else:
       msg="Oops! That was wrong"
+    if useButtonBox:
+#        msg="RT=%.3f" %(timing)
+        if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
+           msg="good" 
+        else:
+              msg="Oops! That was too slow"
     feedback_2.setText(msg)
+
+    
     # keep track of which components have finished
     feedbackComponents = [feedback_2]
     for thisComponent in feedbackComponents:
