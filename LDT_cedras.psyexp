@@ -1,0 +1,273 @@
+<?xml version="1.0" ?>
+<PsychoPy2experiment encoding="utf-8" version="1.84.2">
+  <Settings>
+    <Param name="Show mouse" updates="None" val="False" valType="bool"/>
+    <Param name="Data filename" updates="None" val="u'data' + os.sep + '%s_%s' % (expInfo['participant'], expInfo['date'])" valType="code"/>
+    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
+    <Param name="color" updates="None" val="black" valType="str"/>
+    <Param name="Window size (pixels)" updates="None" val="[1440, 900]" valType="code"/>
+    <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
+    <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+    <Param name="Experiment info" updates="None" val="{u'session': u'01', u'participant': u''}" valType="code"/>
+    <Param name="Save csv file" updates="None" val="False" valType="bool"/>
+    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
+    <Param name="expName" updates="None" val="LDT_cedras" valType="str"/>
+    <Param name="logging level" updates="None" val="exp" valType="code"/>
+    <Param name="blendMode" updates="None" val="avg" valType="str"/>
+    <Param name="Save excel file" updates="None" val="True" valType="bool"/>
+    <Param name="Units" updates="None" val="norm" valType="str"/>
+    <Param name="Use version" updates="None" val="" valType="str"/>
+    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Screen" updates="None" val="1" valType="num"/>
+  </Settings>
+  <Routines>
+    <Routine name="trial">
+      <TextComponent name="itemL">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="constant" val="itemL" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="White" valType="str"/>
+        <Param name="text" updates="set every repeat" val="$left" valType="str"/>
+        <Param name="stopVal" updates="constant" val=".25" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="[-0.20, 0]" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="1" valType="code"/>
+        <Param name="font" updates="constant" val="courier" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.15" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="resp">
+        <Param name="correctAns" updates="constant" val="$corrAns" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="resp" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="'1', '2', '3'" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="1" valType="code"/>
+        <Param name="store" updates="constant" val="first key" valType="str"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <TextComponent name="itemR">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="itemR" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="set every repeat" val="$right" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.25" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0.20, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="1.0" valType="code"/>
+        <Param name="font" updates="constant" val="courier" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.15" valType="code"/>
+      </TextComponent>
+      <TextComponent name="fixation">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="fixation" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="+" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.75" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.5" valType="code"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.2" valType="code"/>
+      </TextComponent>
+      <TextComponent name="blank">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="blank" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+      </TextComponent>
+      <cedrusButtonBoxComponent name="buttonBox">
+        <Param name="correctAns" updates="constant" val="$corrAns" valType="code"/>
+        <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="buttonBox" valType="code"/>
+        <Param name="deviceNumber" updates="constant" val="0" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="useBoxTimer" updates="constant" val="False" valType="bool"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="'1' '2' '3'" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="1" valType="code"/>
+        <Param name="store" updates="constant" val="first key" valType="str"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </cedrusButtonBoxComponent>
+    </Routine>
+    <Routine name="instruct">
+      <TextComponent name="instrText">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="constant" val="instrText" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="$[1, 1, 1]" valType="str"/>
+        <Param name="text" updates="constant" val="OK. Ready for the real thing?&amp;#10;&amp;#10;Choose '1' if no real words&amp;#10;Choose '2' if one real word&amp;#10;Choose '3' if two real words&amp;#10;Press any key to continue" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="font" updates="constant" val="Courier" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="ready">
+        <Param name="correctAns" updates="constant" val="thisTrial.corrAns" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="ready" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+    <Routine name="thanks">
+      <TextComponent name="thanksText">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="constant" val="thanksText" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="$[1, 1, 1]" valType="str"/>
+        <Param name="text" updates="constant" val="This is the end of the experiment.&amp;#10;&amp;#10;Thanks!" valType="str"/>
+        <Param name="stopVal" updates="constant" val="2.0" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.2" valType="code"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="instructPractice">
+      <TextComponent name="instr1">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="constant" val="instr1" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="Ready for a practice&amp;#10;You will see a fixation cross with two items either side&amp;#10;Choose '1' if no real words&amp;#10;Choose '2' if one real word&amp;#10;Choose '3' if two real words&amp;#10;Press any key to continue" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="Courier" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="ready1">
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="ready1" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+  </Routines>
+  <Flow>
+    <Routine name="instructPractice"/>
+    <LoopInitiator loopType="TrialHandler" name="practice">
+      <Param name="conditionsFile" updates="None" val="conditions1.xlsx" valType="str"/>
+      <Param name="name" updates="None" val="practice" valType="code"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="num"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="conditions" updates="None" val="[{u'typeL': u'word', u'right': u'ship', u'TrialN': 1L, u'corrAns': 0L, u'left': u'tour', u'TypeR': u'word'}, {u'typeL': u'non word', u'right': u'#$%@', u'TrialN': 2L, u'corrAns': 1L, u'left': u'#$%@', u'TypeR': u'non word'}, {u'typeL': u'non word', u'right': u'hart', u'TrialN': 3L, u'corrAns': 2L, u'left': u'#$%@', u'TypeR': u'word'}, {u'typeL': u'non word', u'right': u'#$%@', u'TrialN': 4L, u'corrAns': 0L, u'left': u'#$%@', u'TypeR': u'non word'}]" valType="str"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+    </LoopInitiator>
+    <Routine name="trial"/>
+    <LoopTerminator name="practice"/>
+    <Routine name="instruct"/>
+    <LoopInitiator loopType="TrialHandler" name="trials">
+      <Param name="conditionsFile" updates="None" val="conditions4.xlsx" valType="str"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="num"/>
+      <Param name="endPoints" updates="None" val="[1, 2]" valType="num"/>
+      <Param name="conditions" updates="None" val="[{u'left_word': u'list', u'right_word': u'grid', u'Trial_Number_R': 165L, u'Trial_number_L': 229L, u'CorrAns': 3L, u'order': 0.593175365937935, u'condition': u'two words'}, {u'left_word': u'soak', u'right_word': u'tour', u'Trial_Number_R': 406L, u'Trial_number_L': 371L, u'CorrAns': 3L, u'order': 0.585693971760242, u'condition': u'two words'}, {u'left_word': u'gran', u'right_word': u'dear', u'Trial_Number_R': 83L, u'Trial_number_L': 162L, u'CorrAns': 3L, u'order': 0.04018569352186285, u'condition': u'two words'}, {u'left_word': u'visa', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 421L, u'CorrAns': 2L, u'order': 0.05981256108710775, u'condition': u'one word'}, {u'left_word': u'site', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 362L, u'CorrAns': 2L, u'order': 0.5216432850714432, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.4537945409585119, u'condition': u'zero words'}, {u'left_word': u'song', u'right_word': u'wave', u'Trial_Number_R': 429L, u'Trial_number_L': 375L, u'CorrAns': 3L, u'order': 0.6636805785874974, u'condition': u'two words'}, {u'left_word': u'whip', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 434L, u'CorrAns': 2L, u'order': 0.6761481183496012, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.10458314217575793, u'condition': u'zero words'}, {u'left_word': u'rare', u'right_word': u'ship', u'Trial_Number_R': 354L, u'Trial_number_L': 315L, u'CorrAns': 3L, u'order': 0.5872616139623601, u'condition': u'two words'}, {u'left_word': u'rock', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 330L, u'CorrAns': 2L, u'order': 0.0683527497867592, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.02646960752387617, u'condition': u'zero words'}, {u'left_word': u'duty', u'right_word': u'prey', u'Trial_Number_R': 302L, u'Trial_number_L': 104L, u'CorrAns': 3L, u'order': 0.05330440052966834, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.9624586126405812, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.7759179200052468, u'condition': u'zero words'}, {u'left_word': u'dish', u'right_word': u'roll', u'Trial_Number_R': 332L, u'Trial_number_L': 90L, u'CorrAns': 3L, u'order': 0.19314727475568594, u'condition': u'two words'}, {u'left_word': u'dock', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 92L, u'CorrAns': 2L, u'order': 0.8971712630827426, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.4615404768817768, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'peep', u'Trial_Number_R': 284L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.8204806203750048, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'crew', u'Trial_Number_R': 74L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.691943420153371, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.177704001829604, u'condition': u'zero words'}, {u'left_word': u'felt', u'right_word': u'pint', u'Trial_Number_R': 290L, u'Trial_number_L': 125L, u'CorrAns': 3L, u'order': 0.5447317626410032, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'hole', u'Trial_Number_R': 187L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.1662574231106878, u'condition': u'one word'}, {u'left_word': u'clay', u'right_word': u'punk', u'Trial_Number_R': 305L, u'Trial_number_L': 58L, u'CorrAns': 3L, u'order': 0.13329521047996062, u'condition': u'two words'}, {u'left_word': u'main', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 242L, u'CorrAns': 2L, u'order': 0.8700573535261293, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'rush', u'Trial_Number_R': 341L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.0669601848542023, u'condition': u'one word'}, {u'left_word': u'pray', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 301L, u'CorrAns': 2L, u'order': 0.7905147928607033, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'goin', u'Trial_Number_R': 159L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.3375031390734986, u'condition': u'one word'}, {u'left_word': u'neck', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 268L, u'CorrAns': 2L, u'order': 0.6487168699201903, u'condition': u'one word'}, {u'left_word': u'mood', u'right_word': u'bent', u'Trial_Number_R': 21L, u'Trial_number_L': 260L, u'CorrAns': 3L, u'order': 0.7937875980716999, u'condition': u'two words'}, {u'left_word': u'boot', u'right_word': u'harm', u'Trial_Number_R': 174L, u'Trial_number_L': 33L, u'CorrAns': 3L, u'order': 0.4406819611849939, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'calm', u'Trial_Number_R': 43L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.12912380546464797, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.1815717414346576, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.9800445707831237, u'condition': u'zero words'}, {u'left_word': u'drum', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 101L, u'CorrAns': 2L, u'order': 0.6081380872863009, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.22011377765933682, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.9139430580271248, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'damp', u'Trial_Number_R': 77L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.1934453468113817, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'heat', u'Trial_Number_R': 178L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.0489269986139067, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.42069399868549573, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.5967761173456835, u'condition': u'zero words'}, {u'left_word': u'east', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 108L, u'CorrAns': 2L, u'order': 0.8752877091639802, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.42347186349259747, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.6635164963235207, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'slot', u'Trial_Number_R': 367L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.8737472491411915, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.05103068761454477, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'bare', u'Trial_Number_R': 8L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.09305610415469756, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'wrap', u'Trial_Number_R': 446L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.8855193066222039, u'condition': u'one word'}, {u'left_word': u'cell', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 50L, u'CorrAns': 2L, u'order': 0.19491923878141548, u'condition': u'one word'}, {u'left_word': u'bruv', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 37L, u'CorrAns': 2L, u'order': 0.976936048597029, u'condition': u'one word'}, {u'left_word': u'dire', u'right_word': u'dive', u'Trial_Number_R': 91L, u'Trial_number_L': 89L, u'CorrAns': 3L, u'order': 0.8440290420500164, u'condition': u'two words'}, {u'left_word': u'kept', u'right_word': u'rich', u'Trial_Number_R': 322L, u'Trial_number_L': 207L, u'CorrAns': 3L, u'order': 0.7514728451177504, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.19024951744742435, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.6577059193638616, u'condition': u'zero words'}, {u'left_word': u'lump', u'right_word': u'ride', u'Trial_Number_R': 323L, u'Trial_number_L': 238L, u'CorrAns': 3L, u'order': 0.8848339482926348, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.4643344454781346, u'condition': u'zero words'}, {u'left_word': u'ouch', u'right_word': u'boss', u'Trial_Number_R': 35L, u'Trial_number_L': 272L, u'CorrAns': 3L, u'order': 0.27218774876377483, u'condition': u'two words'}, {u'left_word': u'load', u'right_word': u'knee', u'Trial_Number_R': 211L, u'Trial_number_L': 230L, u'CorrAns': 3L, u'order': 0.2224161827387764, u'condition': u'two words'}, {u'left_word': u'club', u'right_word': u'mime', u'Trial_Number_R': 254L, u'Trial_number_L': 60L, u'CorrAns': 3L, u'order': 0.4576953788224599, u'condition': u'two words'}, {u'left_word': u'drag', u'right_word': u'bike', u'Trial_Number_R': 22L, u'Trial_number_L': 96L, u'CorrAns': 3L, u'order': 0.04023525752264301, u'condition': u'two words'}, {u'left_word': u'drew', u'right_word': u'wool', u'Trial_Number_R': 444L, u'Trial_number_L': 98L, u'CorrAns': 3L, u'order': 0.17435048652797935, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.4305464064114861, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'clue', u'Trial_Number_R': 61L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.9536897214665463, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.15218489465596752, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.6532192607901953, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.3994219152063673, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'hour', u'Trial_Number_R': 192L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.4571706807481284, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'leap', u'Trial_Number_R': 225L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.5389786619565772, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.995881151412025, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'grey', u'Trial_Number_R': 164L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.19886227420295632, u'condition': u'one word'}, {u'left_word': u'hurt', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 196L, u'CorrAns': 2L, u'order': 0.4269613500446955, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.2712090444995725, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.2935434908506017, u'condition': u'zero words'}, {u'left_word': u'rudi', u'right_word': u'leaf', u'Trial_Number_R': 223L, u'Trial_number_L': 337L, u'CorrAns': 3L, u'order': 0.9956624839010983, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.10020933264862031, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.7062816027738691, u'condition': u'zero words'}, {u'left_word': u'myth', u'right_word': u'putt', u'Trial_Number_R': 307L, u'Trial_number_L': 264L, u'CorrAns': 3L, u'order': 0.867781174451658, u'condition': u'two words'}, {u'left_word': u'rita', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 328L, u'CorrAns': 2L, u'order': 0.8468927683297383, u'condition': u'one word'}, {u'left_word': u'wage', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 423L, u'CorrAns': 2L, u'order': 0.5809279291147038, u'condition': u'one word'}, {u'left_word': u'lean', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 224L, u'CorrAns': 2L, u'order': 0.946290428515244, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'size', u'Trial_Number_R': 363L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.6969940443472312, u'condition': u'one word'}, {u'left_word': u'soul', u'right_word': u'doll', u'Trial_Number_R': 94L, u'Trial_number_L': 376L, u'CorrAns': 3L, u'order': 0.35899271159864166, u'condition': u'two words'}, {u'left_word': u'rack', u'right_word': u'tend', u'Trial_Number_R': 394L, u'Trial_number_L': 310L, u'CorrAns': 3L, u'order': 0.0031567689065082893, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'grew', u'Trial_Number_R': 163L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.7844884919473477, u'condition': u'one word'}, {u'left_word': u'lift', u'right_word': u'lake', u'Trial_Number_R': 215L, u'Trial_number_L': 227L, u'CorrAns': 3L, u'order': 0.5834561085927381, u'condition': u'two words'}, {u'left_word': u'bond', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 30L, u'CorrAns': 2L, u'order': 0.9306857642042937, u'condition': u'one word'}, {u'left_word': u'wake', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 424L, u'CorrAns': 2L, u'order': 0.3774442704517732, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'doin', u'Trial_Number_R': 93L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.32584548945907, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.9551540495654083, u'condition': u'zero words'}, {u'left_word': u'lens', u'right_word': u'dead', u'Trial_Number_R': 81L, u'Trial_number_L': 226L, u'CorrAns': 3L, u'order': 0.40223369105428264, u'condition': u'two words'}, {u'left_word': u'wolf', u'right_word': u'self', u'Trial_Number_R': 351L, u'Trial_number_L': 441L, u'CorrAns': 3L, u'order': 0.36467471588223777, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.45363771528810004, u'condition': u'zero words'}, {u'left_word': u'glad', u'right_word': u'soil', u'Trial_Number_R': 374L, u'Trial_number_L': 155L, u'CorrAns': 3L, u'order': 0.589611892317381, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.3617467024350416, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.12840885870089702, u'condition': u'zero words'}, {u'left_word': u'wood', u'right_word': u'cage', u'Trial_Number_R': 41L, u'Trial_number_L': 442L, u'CorrAns': 3L, u'order': 0.7967132182162663, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.3591157293437963, u'condition': u'zero words'}, {u'left_word': u'date', u'right_word': u'term', u'Trial_Number_R': 396L, u'Trial_number_L': 79L, u'CorrAns': 3L, u'order': 0.40285302664701894, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.3525450202895538, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.1119063436184341, u'condition': u'zero words'}, {u'left_word': u'warm', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 427L, u'CorrAns': 2L, u'order': 0.22060906959155624, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.8814190445345617, u'condition': u'zero words'}, {u'left_word': u'type', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 414L, u'CorrAns': 2L, u'order': 0.08405431153456311, u'condition': u'one word'}, {u'left_word': u'pike', u'right_word': u'code', u'Trial_Number_R': 64L, u'Trial_number_L': 287L, u'CorrAns': 3L, u'order': 0.11629421521063721, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'skin', u'Trial_Number_R': 364L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.5288563567581528, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.4563681794952552, u'condition': u'zero words'}, {u'left_word': u'port', u'right_word': u'fair', u'Trial_Number_R': 115L, u'Trial_number_L': 298L, u'CorrAns': 3L, u'order': 0.06906712015884531, u'condition': u'two words'}, {u'left_word': u'vale', u'right_word': u'grip', u'Trial_Number_R': 167L, u'Trial_number_L': 416L, u'CorrAns': 3L, u'order': 0.1383929740470622, u'condition': u'two words'}, {u'left_word': u'damn', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 76L, u'CorrAns': 2L, u'order': 0.4650488858646463, u'condition': u'one word'}, {u'left_word': u'view', u'right_word': u'near', u'Trial_Number_R': 267L, u'Trial_number_L': 420L, u'CorrAns': 3L, u'order': 0.2465440388826824, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.4547978984932246, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.8146290676236988, u'condition': u'zero words'}, {u'left_word': u'wore', u'right_word': u'plug', u'Trial_Number_R': 291L, u'Trial_number_L': 445L, u'CorrAns': 3L, u'order': 0.9945701122443407, u'condition': u'two words'}, {u'left_word': u'mile', u'right_word': u'bush', u'Trial_Number_R': 40L, u'Trial_number_L': 251L, u'CorrAns': 3L, u'order': 0.1375684451517335, u'condition': u'two words'}, {u'left_word': u'clip', u'right_word': u'trap', u'Trial_Number_R': 407L, u'Trial_number_L': 59L, u'CorrAns': 3L, u'order': 0.2811810857619417, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'earn', u'Trial_Number_R': 106L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.6190671001937635, u'condition': u'one word'}, {u'left_word': u'dark', u'right_word': u'boom', u'Trial_Number_R': 32L, u'Trial_number_L': 78L, u'CorrAns': 3L, u'order': 0.6110375645337223, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.366889980395533, u'condition': u'zero words'}, {u'left_word': u'sale', u'right_word': u'tone', u'Trial_Number_R': 403L, u'Trial_number_L': 344L, u'CorrAns': 3L, u'order': 0.857392666172722, u'condition': u'two words'}, {u'left_word': u'path', u'right_word': u'thin', u'Trial_Number_R': 399L, u'Trial_number_L': 280L, u'CorrAns': 3L, u'order': 0.5725117686313446, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.7404593373300971, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.6399771390250755, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.8284224288428677, u'condition': u'zero words'}, {u'left_word': u'hell', u'right_word': u'blue', u'Trial_Number_R': 27L, u'Trial_number_L': 181L, u'CorrAns': 3L, u'order': 0.2706282145352892, u'condition': u'two words'}, {u'left_word': u'trim', u'right_word': u'role', u'Trial_Number_R': 331L, u'Trial_number_L': 410L, u'CorrAns': 3L, u'order': 0.5812983268870934, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'jose', u'Trial_Number_R': 204L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.7447267471714366, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.8371433445548897, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'note', u'Trial_Number_R': 271L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.8384843690560284, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'dual', u'Trial_Number_R': 102L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.6025736161005882, u'condition': u'one word'}, {u'left_word': u'park', u'right_word': u'deep', u'Trial_Number_R': 86L, u'Trial_number_L': 278L, u'CorrAns': 3L, u'order': 0.950874523299196, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.6151921576987972, u'condition': u'zero words'}, {u'left_word': u'cost', u'right_word': u'flip', u'Trial_Number_R': 134L, u'Trial_number_L': 72L, u'CorrAns': 3L, u'order': 0.6642929619902636, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'maid', u'Trial_Number_R': 240L, u'Trial_number_L': u'NA', u'CorrAns': 2L, u'order': 0.17291593697107033, u'condition': u'one word'}, {u'left_word': u'deck', u'right_word': u'raid', u'Trial_Number_R': 312L, u'Trial_number_L': 85L, u'CorrAns': 3L, u'order': 0.6938447524968822, u'condition': u'two words'}, {u'left_word': u'desk', u'right_word': u'sink', u'Trial_Number_R': 361L, u'Trial_number_L': 88L, u'CorrAns': 3L, u'order': 0.7450628115601159, u'condition': u'two words'}, {u'left_word': u'lack', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 214L, u'CorrAns': 2L, u'order': 0.10921147551775712, u'condition': u'one word'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.959617401538743, u'condition': u'zero words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.623961575853169, u'condition': u'zero words'}, {u'left_word': u'heel', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 179L, u'CorrAns': 2L, u'order': 0.10229065448887897, u'condition': u'one word'}, {u'left_word': u'hoot', u'right_word': u'goal', u'Trial_Number_R': 157L, u'Trial_number_L': 190L, u'CorrAns': 3L, u'order': 0.7318537523755232, u'condition': u'two words'}, {u'left_word': u'****', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': u'NA', u'CorrAns': 1L, u'order': 0.00738309703700768, u'condition': u'zero words'}, {u'left_word': u'meal', u'right_word': u'born', u'Trial_Number_R': 34L, u'Trial_number_L': 247L, u'CorrAns': 3L, u'order': 0.6857470029263646, u'condition': u'two words'}, {u'left_word': u'wife', u'right_word': u'****', u'Trial_Number_R': u'NA', u'Trial_number_L': 436L, u'CorrAns': 2L, u'order': 0.41408853214393404, u'condition': u'one word'}, {u'left_word': u'step', u'right_word': u'cake', u'Trial_Number_R': 42L, u'Trial_number_L': 383L, u'CorrAns': 3L, u'order': 0.8622244243438001, u'condition': u'two words'}]" valType="str"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+    </LoopInitiator>
+    <Routine name="trial"/>
+    <LoopTerminator name="trials"/>
+    <Routine name="thanks"/>
+  </Flow>
+</PsychoPy2experiment>

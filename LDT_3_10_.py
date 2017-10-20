@@ -148,7 +148,34 @@ blank = visual.TextStim(win=win, name='blank',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-4.0);
-
+#buttonBox = None
+for n in range(10):
+    try:
+        # doesn't always work first time!
+        serialPorts = serial.tools.list_ports.comports() #List of connected items
+        devices = [port.description for port in serialPorts] #description attributes of connected items
+        try: #is there an arduino box connected?
+            boxPortIndex = devices.index('Arduino Uno') 
+            buttonBox = serial.Serial(serialPorts[boxPortIndex].device, timeout=1, baudrate = 9600, write_timeout=1) #if there is, set it up
+        except ValueError:
+            print('Button box not found')
+            return None
+            buttonBox.in_waiting
+            core.wait(2)
+            time.sleep(1)
+            line = buttonBox.readline()
+            print('line is', line)
+            if line == 'Initialised\r\n':
+                print('buttonBox', line.split('\r\n')[0][1])
+                buttonBox.write(b'p')
+                line = buttonBox.readline()
+            if line == 'waiting for input\r\n':
+                print(line)
+                return buttonBox
+            else:
+                print('Failed to initialise buttonBox')
+                return None
+            buttonBox.Clock = core.Clock()
 # Initialize components for Routine "feedback"
 feedbackClock = core.Clock()
 #msg variable just needs some value at start
@@ -252,9 +279,13 @@ while continueRoutine:
         # check for quit:
         if "escape" in theseKeys:
             endExpNow = True
+        if useButtonBox:
+            if totalTrials > 0:
+                continueRoutine = False
         if len(theseKeys) > 0:  # at least one key was pressed
+                continueRoutine = False
             # a response ends the routine
-         continueRoutine = False
+
     
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -314,9 +345,10 @@ for thisPractice in practice:
     itemL.setText(left)
     resp = event.BuilderKeyResponse()
     itemR.setText(right)
-
+    buttonBox.keys = []  # to store response values
+    buttonBox.rt = []
     # keep track of which components have finished
-    trialComponents = [fixation, blank,itemL, itemR, resp]
+    trialComponents = [fixation, blank,itemL, itemR, resp, buttonBox]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -379,14 +411,6 @@ for thisPractice in practice:
             win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
             event.clearEvents(eventType='keyboard')
         if resp.status == STARTED:
-#        if useButtonBox:
-#           if buttonBox== (b'b'): 
-#               continueRoutine = False
-#               if buttonBox== (b'c'): 
-#                   continueRoutine = False
-#               if buttonBox== (b'd'): 
-#                   continueRoutine = False
-#           else:
             theseKeys = event.getKeys(keyList=['1', '2', '3'])
             # check for quit:
             if "escape" in theseKeys:
@@ -402,8 +426,45 @@ for thisPractice in practice:
                         resp.corr = 0
                     # a response ends the routine
                     continueRoutine = False
-
-
+        # *buttonBox* updates
+        if useButtonBox:
+            if t >= 1 and buttonBox.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                buttonBox.tStart = t
+                buttonBox.frameNStart = frameN  # exact frame index
+                buttonBox.status = STARTED
+                buttonBox.clock.reset()  # now t=0
+                # clear buttonBox responses (in a loop - the Cedrus own function doesn't work well)
+                buttonBox.poll_for_response()
+                while len(buttonBox.response_queue):
+                    buttonBox.clear_response_queue()
+                    buttonBox.poll_for_response() #often there are more resps waiting!
+            if buttonBox.status == STARTED:
+                theseKeys=[]
+    #            theseRTs=[]
+                # check for key presses
+                buttonBox.poll_for_response()
+                while len(buttonBox.response_queue):
+                    evt = buttonBox.get_next_response()
+                    if evt['key'] not in ['123']:
+                        continue  # we don't care about this key
+                    if evt['pressed']:
+                      theseKeys.append(evt['key'])
+                      theseRTs.append(buttonBox.clock.getTime())
+                    buttonBox.poll_for_response()
+                buttonBox.clear_response_queue()  # don't process again
+                if len(theseKeys) > 0:  # at least one key was pressed
+                    if buttonBox.keys == []:  # then this is first keypress
+                        buttonBox.keys = theseKeys[0]  # the first key pressed
+                        buttonBox.rt = theseRTs[0]
+                        # was this 'correct'?
+                        if (buttonBox.keys == str(corrAns)) or (buttonBox.keys == corrAns):
+                            buttonBox.corr = 1
+                        else:
+                            buttonBox.corr = 0
+                        # a response ends the routine
+                        continueRoutine = False   
+    
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
             break
@@ -455,7 +516,7 @@ for thisPractice in practice:
             buttonBox.reset_input_buffer()
             buttonBox.write(b'p') 
             buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-        elif BBLine=="Triggered\n\r":
+        elif BBLine=="Triggered\n\r": #and BBLine =="Timed Out\n\r":
             timing = response = 'NA'
             triggered = True
             nTriggeredTestTrials += 1
@@ -464,6 +525,15 @@ for thisPractice in practice:
             buttonBox.reset_input_buffer()
             buttonBox.write(b'p') 
             buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+#        elif BBLine=="No Trigger\n\r" and BBLine ="Timed Out\n\r":
+#            timing = response = 'NA'
+#            triggered = True
+#            nTriggeredTestTrials += 1
+#            while buttonBox.in_waiting>0:
+#                print(buttonBox.readline())
+#            buttonBox.reset_input_buffer()
+#            buttonBox.write(b'p') 
+#            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
         else:
             timing = response = 'NA'
             triggered = False
@@ -493,7 +563,6 @@ for thisPractice in practice:
             buttonBox.reset_input_buffer()
             buttonBox.write(b'p')
             buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-#    continueRoutine = False
                 # store data for practice (TrialHandler)
     practice.addData('resp.keys',resp.keys)
     practice.addData('resp.corr', resp.corr)

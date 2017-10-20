@@ -394,9 +394,9 @@ for thisPractice in practice:
                         resp.corr = 0
                     # a response ends the routine
                     continueRoutine = False
-#            if useButtonBox:
-#               if buttonBox.write(b'p')
-#                   continueRoutine = False
+        if useButtonBox and resp.status ==STARTED:
+           if buttonBox.write(b'p'):
+               continueRoutine = False
 
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -419,7 +419,70 @@ for thisPractice in practice:
     for thisComponent in trialComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # check responses
+
+    if useButtonBox:
+        if useButtonBox and not triggerTest:
+            print('Button box info...')
+            print('\t',buttonBox.in_waiting, 'bytes in BB buffer')
+            BBLine = buttonBox.readline()
+            print(BBLine)
+            print(str(len(BBLine)))
+            while buttonBox.in_waiting>0:
+                print(buttonBox.readline())
+            if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
+                BBLine = BBLine.split('\t')
+                timing = BBLine[0]
+                response = BBLine[1][0]#Second indexing removes \n\r
+                triggered = True
+                print('timing...')
+                print('\t', str(timing))
+                print('response...')
+                print('\t', str(response))
+                while buttonBox.in_waiting>0:
+                    print(buttonBox.readline())
+                buttonBox.reset_input_buffer()
+                buttonBox.write(b'p') 
+                buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+            elif BBLine=="Triggered\n\r":
+                timing = response = 'NA'
+                triggered = True
+                nTriggeredTestTrials += 1
+                while buttonBox.in_waiting>0:
+                    print(buttonBox.readline())
+                buttonBox.reset_input_buffer()
+                buttonBox.write(b'p') 
+                buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+            else:
+                timing = response = 'NA'
+                triggered = False
+                buttonBox.reset_input_buffer()
+                buttonBox.write(b'p')
+                buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+
+        elif useButtonBox and triggerTest:
+            print('Button box info...')
+            print('\t',buttonBox.in_waiting, 'bytes in BB buffer')
+            BBLine = buttonBox.readline()
+            print(BBLine)
+            print(str(len(BBLine)))
+            while buttonBox.in_waiting>0:
+                print(buttonBox.readline())
+            if BBLine=="Triggered\n\r":
+                timing = response = 'NA'
+                triggered = True
+                nTriggeredTestTrials += 1
+                while buttonBox.in_waiting>0:
+                    print(buttonBox.readline())
+                buttonBox.reset_input_buffer()
+                buttonBox.write(b'p') 
+                buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+            else:
+                timing = response = 'NA'
+                triggered = False
+                buttonBox.reset_input_buffer()
+                buttonBox.write(b'p')
+                buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
+             # check responses
     if resp.keys in ['', [], None]:  # No response was made
         resp.keys=None
         # was no response the correct answer?!
@@ -427,78 +490,19 @@ for thisPractice in practice:
            resp.corr = 1  # correct non-response
         else:
            resp.corr = 0  # failed to respond (incorrectly)
-    if useButtonBox and not triggerTest:
-        print('Button box info...')
-        print('\t',buttonBox.in_waiting, 'bytes in BB buffer')
-        BBLine = buttonBox.readline()
-        print(BBLine)
-        print(str(len(BBLine)))
-        while buttonBox.in_waiting>0:
-            print(buttonBox.readline())
-        if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
-            BBLine = BBLine.split('\t')
-            timing = BBLine[0]
-            response = BBLine[1][0]#Second indexing removes \n\r
-            triggered = True
-            print('timing...')
-            print('\t', str(timing))
-            print('response...')
-            print('\t', str(response))
-            while buttonBox.in_waiting>0:
-                print(buttonBox.readline())
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p') 
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-        elif BBLine=="Triggered\n\r":
-            timing = response = 'NA'
-            triggered = True
-            nTriggeredTestTrials += 1
-            while buttonBox.in_waiting>0:
-                print(buttonBox.readline())
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p') 
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-        else:
-            timing = response = 'NA'
-            triggered = False
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p')
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-    elif useButtonBox and triggerTest:
-        print('Button box info...')
-        print('\t',buttonBox.in_waiting, 'bytes in BB buffer')
-        BBLine = buttonBox.readline()
-        print(BBLine)
-        print(str(len(BBLine)))
-        while buttonBox.in_waiting>0:
-            print(buttonBox.readline())
-        if BBLine=="Triggered\n\r":
-            timing = response = 'NA'
-            triggered = True
-            nTriggeredTestTrials += 1
-            while buttonBox.in_waiting>0:
-                print(buttonBox.readline())
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p') 
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-        else:
-            timing = response = 'NA'
-            triggered = False
-            buttonBox.reset_input_buffer()
-            buttonBox.write(b'p')
-            buttonBox.readline() #Readline is just here to clear the "waiting for input" line from the box's buffer
-
+    
                 # store data for practice (TrialHandler)
     practice.addData('resp.keys',resp.keys)
     practice.addData('resp.corr', resp.corr)
+    
     if resp.keys != None:  # we had a response
         practice.addData('resp.rt', resp.rt)
     if useButtonBox:
         practice.addData('buttonBoxButton','\t')
         practice.addData('buttonBoxRT','\t')
-    if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
-             practice.addData('buttonBoxButton',response)
-             practice.addData('buttonBoxRT',timing)
+        if BBLine != 'No Trigger\n\r' and BBLine !="Timed Out\n\r":
+                 practice.addData('buttonBoxButton',response)
+                 practice.addData('buttonBoxRT',timing)
     # the Routine "trial" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
 # completed 1.0 repeats of 'practice'

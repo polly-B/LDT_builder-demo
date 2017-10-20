@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.84.2),
-    on Mon 31 Jul 16:00:57 2017
+    on Fri  6 Oct 13:08:05 2017
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -11,7 +11,7 @@ If you publish work using this script please cite the PsychoPy publications:
 """
 
 from __future__ import absolute_import, division
-from psychopy import locale_setup, gui, visual, core, data, event, logging, sound
+from psychopy import locale_setup, gui, visual, core, data, event, logging, sound, hardware
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 import numpy as np  # whole numpy lib is available, prepend 'np.'
@@ -50,6 +50,8 @@ logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a f
 endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Start Code - component code to be run before the window creation
+import pyxid  # to use the Cedrus response box
+import pyxid  # to use the Cedrus response box
 
 # Setup the Window
 win = visual.Window(
@@ -100,18 +102,20 @@ blank = visual.TextStim(win=win, name='blank',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-4.0);
-    
-# Initialize components for Routine "feedback"
-feedbackClock = core.Clock()
-#msg variable just needs some value at start
-msg=''
-feedback_2 = visual.TextStim(win=win, name='feedback_2',
-    text='default text',
-    font=u'Arial',
-    pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
-    color=[1,1,1], colorSpace='rgb', opacity=1,
-    depth=-1.0);
-    
+buttonBox = None
+for n in range(10):  # doesn't always work first time!
+    try:
+        devices = pyxid.get_xid_devices()
+        core.wait(0.1)
+        buttonBox = devices[0]
+        break  # found a device so can break the loop
+    except Exception:
+        pass
+if not buttonBox:
+    logging.error('could not find a Cedrus device.')
+    core.quit()
+buttonBox.clock = core.Clock()
+
 # Initialize components for Routine "instruct"
 instructClock = core.Clock()
 instrText = visual.TextStim(win=win, name='instrText',
@@ -147,6 +151,19 @@ blank = visual.TextStim(win=win, name='blank',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-4.0);
+buttonBox = None
+for n in range(10):  # doesn't always work first time!
+    try:
+        devices = pyxid.get_xid_devices()
+        core.wait(0.1)
+        buttonBox = devices[0]
+        break  # found a device so can break the loop
+    except Exception:
+        pass
+if not buttonBox:
+    logging.error('could not find a Cedrus device.')
+    core.quit()
+buttonBox.clock = core.Clock()
 
 # Initialize components for Routine "thanks"
 thanksClock = core.Clock()
@@ -258,8 +275,10 @@ for thisPractice in practice:
     itemL.setText(left)
     resp = event.BuilderKeyResponse()
     itemR.setText(right)
+    buttonBox.keys = []  # to store response values
+    buttonBox.rt = []
     # keep track of which components have finished
-    trialComponents = [itemL, resp, itemR, fixation, blank]
+    trialComponents = [itemL, resp, itemR, fixation, blank, buttonBox]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -337,6 +356,43 @@ for thisPractice in practice:
         frameRemains = 0.0 + 0.5- win.monitorFramePeriod * 0.75  # most of one frame period left
         if blank.status == STARTED and t >= frameRemains:
             blank.setAutoDraw(False)
+        # *buttonBox* updates
+        if t >= 1 and buttonBox.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            buttonBox.tStart = t
+            buttonBox.frameNStart = frameN  # exact frame index
+            buttonBox.status = STARTED
+            buttonBox.clock.reset()  # now t=0
+            # clear buttonBox responses (in a loop - the Cedrus own function doesn't work well)
+            buttonBox.poll_for_response()
+            while len(buttonBox.response_queue):
+                buttonBox.clear_response_queue()
+                buttonBox.poll_for_response() #often there are more resps waiting!
+        if buttonBox.status == STARTED:
+            theseKeys=[]
+            theseRTs=[]
+            # check for key presses
+            buttonBox.poll_for_response()
+            while len(buttonBox.response_queue):
+                evt = buttonBox.get_next_response()
+                if evt['key'] not in ['123']:
+                    continue  # we don't care about this key
+                if evt['pressed']:
+                  theseKeys.append(evt['key'])
+                  theseRTs.append(buttonBox.clock.getTime())
+                buttonBox.poll_for_response()
+            buttonBox.clear_response_queue()  # don't process again
+            if len(theseKeys) > 0:  # at least one key was pressed
+                if buttonBox.keys == []:  # then this is first keypress
+                    buttonBox.keys = theseKeys[0]  # the first key pressed
+                    buttonBox.rt = theseRTs[0]
+                    # was this 'correct'?
+                    if (buttonBox.keys == str(corrAns)) or (buttonBox.keys == corrAns):
+                        buttonBox.corr = 1
+                    else:
+                        buttonBox.corr = 0
+                    # a response ends the routine
+                    continueRoutine = False
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -372,70 +428,23 @@ for thisPractice in practice:
     practice.addData('resp.corr', resp.corr)
     if resp.keys != None:  # we had a response
         practice.addData('resp.rt', resp.rt)
+    # check responses
+    if buttonBox.keys in ['', [], None]:  # No response was made
+        buttonBox.keys=None
+        # was no response the correct answer?!
+        if str(corrAns).lower() == 'none':
+           buttonBox.corr = 1  # correct non-response
+        else:
+           buttonBox.corr = 0  # failed to respond (incorrectly)
+    # store data for practice (TrialHandler)
+    practice.addData('buttonBox.keys',buttonBox.keys)
+    practice.addData('buttonBox.corr', buttonBox.corr)
+    if buttonBox.keys != None:  # we had a response
+        practice.addData('buttonBox.rt', buttonBox.rt)
     # the Routine "trial" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-    
-    # ------Prepare to start Routine "feedback"-------
-    t = 0
-    feedbackClock.reset()  # clock
-    frameN = -1
-    continueRoutine = True
-    routineTimer.add(1.000000)
-    # update component parameters for each repeat
-    if resp.corr:#stored on last run routine
-      msg="Correct! RT=%.3f" %(resp.rt)
-    else:
-      msg="Oops! That was wrong"
-    feedback_2.setText(msg)
-    # keep track of which components have finished
-    feedbackComponents = [feedback_2]
-    for thisComponent in feedbackComponents:
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    
-    # -------Start Routine "feedback"-------
-    while continueRoutine and routineTimer.getTime() > 0:
-        # get current time
-        t = feedbackClock.getTime()
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        
-        # *feedback_2* updates
-        if t >= 0.0 and feedback_2.status == NOT_STARTED:
-            # keep track of start time/frame for later
-            feedback_2.tStart = t
-            feedback_2.frameNStart = frameN  # exact frame index
-            feedback_2.setAutoDraw(True)
-        frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
-        if feedback_2.status == STARTED and t >= frameRemains:
-            feedback_2.setAutoDraw(False)
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in feedbackComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # check for quit (the Esc key)
-        if endExpNow or event.getKeys(keyList=["escape"]):
-            core.quit()
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # -------Ending Routine "feedback"-------
-    for thisComponent in feedbackComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    
-    thisExp.nextEntry()
-    
 # completed 1.0 repeats of 'practice'
+
 
 # ------Prepare to start Routine "instruct"-------
 t = 0
@@ -534,8 +543,10 @@ for thisTrial in trials:
     itemL.setText(left)
     resp = event.BuilderKeyResponse()
     itemR.setText(right)
+    buttonBox.keys = []  # to store response values
+    buttonBox.rt = []
     # keep track of which components have finished
-    trialComponents = [itemL, resp, itemR, fixation, blank]
+    trialComponents = [itemL, resp, itemR, fixation, blank, buttonBox]
     for thisComponent in trialComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
@@ -613,6 +624,43 @@ for thisTrial in trials:
         frameRemains = 0.0 + 0.5- win.monitorFramePeriod * 0.75  # most of one frame period left
         if blank.status == STARTED and t >= frameRemains:
             blank.setAutoDraw(False)
+        # *buttonBox* updates
+        if t >= 1 and buttonBox.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            buttonBox.tStart = t
+            buttonBox.frameNStart = frameN  # exact frame index
+            buttonBox.status = STARTED
+            buttonBox.clock.reset()  # now t=0
+            # clear buttonBox responses (in a loop - the Cedrus own function doesn't work well)
+            buttonBox.poll_for_response()
+            while len(buttonBox.response_queue):
+                buttonBox.clear_response_queue()
+                buttonBox.poll_for_response() #often there are more resps waiting!
+        if buttonBox.status == STARTED:
+            theseKeys=[]
+            theseRTs=[]
+            # check for key presses
+            buttonBox.poll_for_response()
+            while len(buttonBox.response_queue):
+                evt = buttonBox.get_next_response()
+                if evt['key'] not in ['123']:
+                    continue  # we don't care about this key
+                if evt['pressed']:
+                  theseKeys.append(evt['key'])
+                  theseRTs.append(buttonBox.clock.getTime())
+                buttonBox.poll_for_response()
+            buttonBox.clear_response_queue()  # don't process again
+            if len(theseKeys) > 0:  # at least one key was pressed
+                if buttonBox.keys == []:  # then this is first keypress
+                    buttonBox.keys = theseKeys[0]  # the first key pressed
+                    buttonBox.rt = theseRTs[0]
+                    # was this 'correct'?
+                    if (buttonBox.keys == str(corrAns)) or (buttonBox.keys == corrAns):
+                        buttonBox.corr = 1
+                    else:
+                        buttonBox.corr = 0
+                    # a response ends the routine
+                    continueRoutine = False
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
@@ -648,6 +696,19 @@ for thisTrial in trials:
     trials.addData('resp.corr', resp.corr)
     if resp.keys != None:  # we had a response
         trials.addData('resp.rt', resp.rt)
+    # check responses
+    if buttonBox.keys in ['', [], None]:  # No response was made
+        buttonBox.keys=None
+        # was no response the correct answer?!
+        if str(corrAns).lower() == 'none':
+           buttonBox.corr = 1  # correct non-response
+        else:
+           buttonBox.corr = 0  # failed to respond (incorrectly)
+    # store data for trials (TrialHandler)
+    trials.addData('buttonBox.keys',buttonBox.keys)
+    trials.addData('buttonBox.corr', buttonBox.corr)
+    if buttonBox.keys != None:  # we had a response
+        trials.addData('buttonBox.rt', buttonBox.rt)
     # the Routine "trial" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     thisExp.nextEntry()
