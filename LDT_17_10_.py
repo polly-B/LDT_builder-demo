@@ -99,7 +99,7 @@ if useButtonBox:
     if triggerTest:
         nTriggerTestTrials += 1
 win = visual.Window(
-    size=(1440, 900), fullscr=True, screen=0,
+    size=(2880, 1800), fullscr=True, screen=0,
     allowGUI=False, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True,
