@@ -127,19 +127,19 @@ buttonBoxStimuli = visual.Circle(win,fillColorSpace='rgb',fillColor=(1,1,1),radi
 itemL = visual.TextStim(win=win, name='itemL',
     text='default text',
     font='courier',
-    pos=[ 0,-0.20], height=0.15, wrapWidth=None, ori=0, 
+    pos=[ 0,-0.20], height=0.25, wrapWidth=None, ori=0, 
     color='White', colorSpace='rgb', opacity=1,
     depth=0.0);
 itemR = visual.TextStim(win=win, name='itemR',
     text='default text',
     font='courier',
-    pos=(0,0.20), height=0.15, wrapWidth=None, ori=0, 
+    pos=(0,0.20), height=0.25, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-2.0);
 fixation = visual.TextStim(win=win, name='fixation',
     text='+',
     font='Arial',
-    pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.15, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-3.0);
 blank = visual.TextStim(win=win, name='blank',
@@ -176,19 +176,19 @@ trialClock = core.Clock()
 itemL = visual.TextStim(win=win, name='itemL',
     text='default text',
     font='courier',
-    pos=[ 0,-0.20], height=0.15, wrapWidth=None, ori=0, 
+    pos=[ 0,-0.20], height=0.25, wrapWidth=None, ori=0, 
     color='White', colorSpace='rgb', opacity=1,
     depth=0.0);
 itemR = visual.TextStim(win=win, name='itemR',
     text='default text',
     font='courier',
-    pos=(0,0.20), height=0.15, wrapWidth=None, ori=0, 
+    pos=(0,0.20), height=0.25, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-2.0);
 fixation = visual.TextStim(win=win, name='fixation',
     text='+',
     font='Arial',
-    pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.15, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=-3.0);
 blank = visual.TextStim(win=win, name='blank',
@@ -284,7 +284,7 @@ routineTimer.reset()
 # set up handler to look after randomisation of conditions etc
 practice = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('conditions1.xlsx'),
+    trialList=data.importConditions('practice.xlsx'),
     seed=None, name='practice')
 thisExp.addLoop(practice)  # add the loop to the experiment
 thisPractice = practice.trialList[0]  # so we can initialise stimuli with some values
@@ -646,7 +646,7 @@ routineTimer.reset()
 # set up handler to look after randomisation of conditions etc
 trial = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('conditions4.xlsx'),
+    trialList=data.importConditions('Letters.xlsx'),
     seed=None, name='trial')
 thisExp.addLoop(trial)  # add the loop to the experiment
 thistrial = trial.trialList[0]  # so we can initialise stimuli with some values
